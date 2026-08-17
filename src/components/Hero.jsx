@@ -1,12 +1,15 @@
-import { Download, ArrowRight, Mail, Phone, Sparkles, Terminal, Code2, Cpu, Database, Flame } from 'lucide-react';
+import { useState } from 'react';
+import { Download, ArrowRight, Mail, Phone, Sparkles, Code2, Cpu, Database, Flame, Play } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { GithubIcon as Github, LinkedinIcon as Linkedin, TwitterXIcon as TwitterX } from './BrandIcons';
 import { portfolioData } from '../data/portfolioData';
 import { useTypewriter } from '../hooks/useTypewriter';
 import TiltCard from './TiltCard';
+import VideoModal from './VideoModal';
 
 export default function Hero() {
   const typedText = useTypewriter(portfolioData.personal.roles);
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const triggerConfetti = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -70,34 +73,41 @@ export default function Hero() {
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-3.5 pt-2">
               <a 
                 href={portfolioData.personal.resumeUrl} 
                 onClick={triggerConfetti}
-                className="group relative inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-r from-primary to-accent text-white font-semibold hover:opacity-95 transition-all hover:scale-105 shadow-xl shadow-primary/25 active:scale-95"
+                className="group relative inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-primary to-accent text-white font-semibold hover:opacity-95 transition-all hover:scale-105 shadow-xl shadow-primary/25 active:scale-95"
               >
-                <Download className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
+                <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
                 <span>Resume</span>
-                <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
-                </span>
               </a>
+
+              {/* Watch Video CTA */}
+              <button
+                onClick={() => setIsVideoOpen(true)}
+                className="group inline-flex items-center gap-2 px-5 py-3.5 rounded-xl glass font-semibold text-foreground hover:text-primary hover:border-primary/60 transition-all hover:scale-105 border border-border/80 shadow-md active:scale-95"
+              >
+                <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                  <Play className="w-3 h-3 fill-current ml-0.5" />
+                </div>
+                <span>Watch Video</span>
+              </button>
 
               <a 
                 href="#projects" 
-                className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl glass font-semibold hover:bg-foreground/10 transition-all hover:scale-105 border border-border/80 shadow-md active:scale-95"
+                className="group inline-flex items-center gap-2 px-5 py-3.5 rounded-xl glass font-medium hover:bg-foreground/10 transition-all hover:scale-105 border border-border/80 shadow-sm active:scale-95"
               >
-                <span>View Projects</span>
+                <span>Projects</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-primary" />
               </a>
 
               <a 
                 href={`tel:${portfolioData.personal.phone}`} 
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl glass font-medium hover:text-primary hover:border-primary/50 transition-all border border-border/80 shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl glass font-medium hover:text-primary hover:border-primary/50 transition-all border border-border/80 shadow-sm"
               >
                 <Phone className="w-4 h-4 text-primary" />
-                <span className="font-mono text-sm">{portfolioData.personal.phone}</span>
+                <span className="font-mono text-xs sm:text-sm">{portfolioData.personal.phone}</span>
               </a>
             </div>
 
@@ -146,7 +156,7 @@ export default function Hero() {
 
           </div>
 
-          {/* Right Column: 3D Interactive Photo with Orbiting Floating Tech Badges */}
+          {/* Right Column: 3D Interactive Photo with Orbiting Floating Tech Badges & Play Overlay */}
           <div className="lg:col-span-5 relative flex justify-center items-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
             
             {/* Orbiting Floating Badge 1 - Top Left */}
@@ -203,14 +213,21 @@ export default function Hero() {
                 <div className="relative rounded-[28px] overflow-hidden glass-panel border border-border/80 shadow-2xl">
                   
                   {/* Photo with Vignette */}
-                  <div className="relative aspect-[4/5] overflow-hidden group">
+                  <div className="relative aspect-[4/5] overflow-hidden group cursor-pointer" onClick={() => setIsVideoOpen(true)}>
                     <img 
                       src={portfolioData.personal.avatar} 
                       alt={portfolioData.personal.name} 
                       className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/25 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent"></div>
                     
+                    {/* Play Video Floating Center Button on Photo */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 transition-opacity">
+                      <div className="p-4 rounded-full glass-panel border border-white/40 shadow-2xl backdrop-blur-xl group-hover:scale-110 transition-transform bg-primary/20 text-white">
+                        <Play className="w-7 h-7 fill-white ml-1" />
+                      </div>
+                    </div>
+
                     {/* Bottom floating badge inside image */}
                     <div className="absolute bottom-3.5 left-3.5 right-3.5 p-3.5 rounded-2xl glass-panel border border-white/20 backdrop-blur-xl shadow-lg">
                       <div className="flex items-center justify-between">
@@ -246,6 +263,13 @@ export default function Hero() {
 
         </div>
       </div>
+
+      {/* Video Player Modal */}
+      <VideoModal
+        isOpen={isVideoOpen}
+        onClose={() => setIsVideoOpen(false)}
+        videoSrc="/intro_video.mp4"
+      />
     </section>
   );
 }
