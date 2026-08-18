@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { Terminal, Code, Cpu, Sparkles, Send, CheckCircle2, CornerDownLeft } from 'lucide-react';
+import { Terminal, Code, Cpu, Sparkles, Send, CheckCircle2, CornerDownLeft, Sparkle } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import TiltCard from './TiltCard';
 
 export default function About() {
   const [terminalInput, setTerminalInput] = useState('');
   const [terminalHistory, setTerminalHistory] = useState([
-    { cmd: 'whoami', output: `Sirish Chandra Yellanki - B.Tech CSE Student, Full-Stack Developer & AI Enthusiast based in Hyderabad, India.` },
-    { cmd: 'cat strengths.txt', output: portfolioData.strengths.join(' • ') },
+    { cmd: 'whoami', output: `Sirish Chandra Yellanki — B.Tech CSE Student, Full-Stack Developer & AI Systems Enthusiast based in Hyderabad, India.` },
+    { cmd: 'cat core_strengths.txt', output: portfolioData.strengths.join(' • ') },
   ]);
 
   const handleCommand = (cmdStr) => {
@@ -20,7 +20,7 @@ export default function About() {
         response = `Available commands: whoami, skills, projects, contact, strengths, education, clear, quote`;
         break;
       case 'whoami':
-        response = `${portfolioData.personal.name} — ${portfolioData.personal.roles.join(', ')}. Passionate about building impactful software and AI workflows.`;
+        response = `${portfolioData.personal.name} — ${portfolioData.personal.roles.join(', ')}. Passionate about building robust software, scalable web services, and practical AI systems.`;
         break;
       case 'skills':
         response = `Frontend (React, Vite, CSS), Backend (Node, Express, REST APIs), DB (Supabase, PostgreSQL), AI (Ollama, Prompt Eng), Tools (Docker, Git).`;
@@ -45,10 +45,10 @@ export default function About() {
         setTerminalInput('');
         return;
       case 'sudo':
-        response = `Permission denied: You are already viewing Sirish's top-tier portfolio! 🚀`;
+        response = `Access granted: Developer portfolio operating at peak performance.`;
         break;
       default:
-        response = `Command not recognized: "${trimmed}". Type "help" for a list of commands.`;
+        response = `Command not recognized: "${trimmed}". Type "help" for a list of valid commands.`;
     }
 
     setTerminalHistory(prev => [...prev, { cmd: trimmed, output: response }]);
@@ -61,38 +61,35 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="py-28 relative overflow-hidden">
+    <section id="about" className="py-24 relative overflow-hidden">
       
-      {/* Background ambient light */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -z-10"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-[120px] -z-10"></div>
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/2 left-0 w-80 h-80 bg-primary/5 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center mb-16 animate-slide-up">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass border border-primary/30 text-primary text-xs font-bold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass border border-border text-primary text-xs font-bold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5" />
-            Discover My Story
+            Engineering Background
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-            About <span className="text-shimmer">Me</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+            About <span className="text-gradient-restrained">Me</span>
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-primary to-accent mx-auto mt-4 rounded-full"></div>
+          <div className="w-16 h-1 bg-primary/40 mx-auto mt-3 rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
-          {/* Left Column: Story & 3D Feature Cards */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="glass p-6 sm:p-8 rounded-3xl border border-border/70 shadow-lg relative overflow-hidden group">
-              <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/15 rounded-full blur-2xl group-hover:bg-primary/25 transition-all"></div>
-              
-              <h3 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
-                <span>Turning Ideas into Functional Reality</span>
+          {/* Left Column: Story & Highlight Cards */}
+          <div className="lg:col-span-6 flex flex-col justify-between space-y-6">
+            <div className="glass-card p-6 sm:p-8 rounded-2xl border border-border shadow-sm flex-1">
+              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4">
+                Engineering Practical Solutions with Modern Tech
               </h3>
               
-              <p className="text-foreground/80 leading-relaxed text-base sm:text-lg mb-4">
+              <p className="text-foreground/80 leading-relaxed text-sm sm:text-base mb-4">
                 {portfolioData.personal.objective}
               </p>
 
@@ -102,25 +99,25 @@ export default function About() {
             </div>
             
             {/* 3D Highlight Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              <TiltCard maxTilt={10} scale={1.02} className="rounded-2xl">
-                <div className="glass p-6 rounded-2xl border border-border/70 hover:border-primary/50 shadow-md h-full transition-all group">
-                  <div className="p-3 bg-primary/15 rounded-xl w-fit text-primary mb-4 group-hover:scale-110 transition-transform">
-                    <Code className="w-6 h-6" />
+              <TiltCard maxTilt={6} scale={1.01} className="rounded-xl">
+                <div className="glass-card p-5 rounded-xl border border-border hover:border-primary/40 shadow-sm h-full transition-all">
+                  <div className="p-2.5 bg-primary/10 rounded-lg w-fit text-primary mb-3">
+                    <Code className="w-5 h-5" />
                   </div>
-                  <h4 className="font-bold text-lg text-foreground mb-1">Full-Stack Dev</h4>
-                  <p className="text-foreground/70 text-sm">React, Node.js, Express, REST APIs & modern cloud architectures.</p>
+                  <h4 className="font-bold text-base text-foreground mb-1">Full-Stack Architecture</h4>
+                  <p className="text-foreground/65 text-xs leading-relaxed">React, Node.js, Express, REST APIs & modern cloud architectures.</p>
                 </div>
               </TiltCard>
 
-              <TiltCard maxTilt={10} scale={1.02} className="rounded-2xl">
-                <div className="glass p-6 rounded-2xl border border-border/70 hover:border-accent/50 shadow-md h-full transition-all group">
-                  <div className="p-3 bg-accent/15 rounded-xl w-fit text-accent mb-4 group-hover:scale-110 transition-transform">
-                    <Cpu className="w-6 h-6" />
+              <TiltCard maxTilt={6} scale={1.01} className="rounded-xl">
+                <div className="glass-card p-5 rounded-xl border border-border hover:border-primary/40 shadow-sm h-full transition-all">
+                  <div className="p-2.5 bg-primary/10 rounded-lg w-fit text-primary mb-3">
+                    <Cpu className="w-5 h-5" />
                   </div>
-                  <h4 className="font-bold text-lg text-foreground mb-1">AI & LLMs</h4>
-                  <p className="text-foreground/70 text-sm">Local LLM workflows, Prompt Engineering & intelligent automation.</p>
+                  <h4 className="font-bold text-base text-foreground mb-1">AI & LLM Workflows</h4>
+                  <p className="text-foreground/65 text-xs leading-relaxed">Local LLM workflows, Prompt Engineering & persistent memory systems.</p>
                 </div>
               </TiltCard>
 
@@ -128,51 +125,51 @@ export default function About() {
           </div>
 
           {/* Right Column: Live Interactive Developer Terminal */}
-          <div className="lg:col-span-6">
-            <TiltCard maxTilt={8} scale={1.01} className="rounded-3xl shadow-2xl">
-              <div className="glass-panel rounded-3xl border border-border/80 overflow-hidden shadow-2xl">
+          <div className="lg:col-span-6 flex">
+            <TiltCard maxTilt={5} scale={1.01} className="rounded-2xl shadow-xl w-full flex">
+              <div className="glass-panel rounded-2xl border border-border overflow-hidden shadow-xl w-full flex flex-col justify-between">
                 
                 {/* Terminal Header */}
-                <div className="bg-foreground/[0.06] dark:bg-black/40 px-5 py-3.5 flex items-center justify-between border-b border-border/60">
+                <div className="bg-foreground/[0.04] dark:bg-[#0D1117] px-4 py-3 flex items-center justify-between border-b border-border">
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-rose-500 hover:opacity-80 transition-opacity"></div>
-                    <div className="w-3 h-3 rounded-full bg-amber-500 hover:opacity-80 transition-opacity"></div>
-                    <div className="w-3 h-3 rounded-full bg-emerald-500 hover:opacity-80 transition-opacity"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-rose-500/80"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
                   </div>
                   <div className="flex items-center gap-1.5 text-xs font-mono text-foreground/60">
                     <Terminal className="w-3.5 h-3.5 text-primary" />
                     <span>sirish@terminal:~ (interactive)</span>
                   </div>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/20 text-primary font-mono font-semibold">
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-primary/10 text-primary font-mono font-medium">
                     zsh
                   </span>
                 </div>
 
                 {/* Terminal Body */}
-                <div className="p-5 sm:p-6 font-mono text-xs sm:text-sm bg-background/90 dark:bg-gray-950/80 min-h-[320px] max-h-[380px] overflow-y-auto space-y-4">
+                <div className="p-5 font-mono text-xs sm:text-sm bg-background/90 dark:bg-[#080A0F] min-h-[300px] max-h-[360px] overflow-y-auto space-y-3 flex-grow">
                   
-                  {/* Shortcut pills */}
-                  <div className="flex items-center flex-wrap gap-2 pb-2 border-b border-border/40">
-                    <span className="text-[11px] text-foreground/50 font-semibold">Quick commands:</span>
-                    {['help', 'whoami', 'skills', 'projects', 'contact', 'quote', 'clear'].map((cmd) => (
+                  {/* Quick Shortcut chips */}
+                  <div className="flex items-center flex-wrap gap-1.5 pb-2 border-b border-border/40">
+                    <span className="text-[11px] text-foreground/45 font-medium">Quick commands:</span>
+                    {['help', 'whoami', 'skills', 'projects', 'contact', 'clear'].map((cmd) => (
                       <button
                         key={cmd}
                         onClick={() => handleCommand(cmd)}
-                        className="px-2.5 py-1 rounded-md bg-primary/10 hover:bg-primary text-primary hover:text-white transition-all text-[11px] border border-primary/20"
+                        className="px-2 py-0.5 rounded bg-foreground/5 hover:bg-primary hover:text-white text-foreground/75 transition-all text-[11px] border border-border"
                       >
                         {cmd}
                       </button>
                     ))}
                   </div>
 
-                  {/* History */}
+                  {/* History Output */}
                   {terminalHistory.map((item, idx) => (
                     <div key={idx} className="space-y-1 animate-fade-in">
-                      <div className="flex items-center gap-2 text-primary font-bold">
-                        <span className="text-accent">&gt;</span>
-                        <span className="text-foreground">{item.cmd}</span>
+                      <div className="flex items-center gap-2 text-primary font-semibold">
+                        <span>&gt;</span>
+                        <span className="text-foreground/90 font-bold">{item.cmd}</span>
                       </div>
-                      <div className="text-foreground/80 pl-4 leading-relaxed whitespace-pre-wrap">
+                      <div className="text-foreground/75 pl-3 leading-relaxed whitespace-pre-wrap text-xs">
                         {item.output}
                       </div>
                     </div>
@@ -180,17 +177,17 @@ export default function About() {
 
                   {/* Interactive CLI Input */}
                   <form onSubmit={handleFormSubmit} className="flex items-center gap-2 pt-2 text-primary">
-                    <span className="text-accent font-bold">&gt;</span>
+                    <span className="font-bold">&gt;</span>
                     <input
                       type="text"
                       value={terminalInput}
                       onChange={(e) => setTerminalInput(e.target.value)}
-                      placeholder="Type a command (e.g. skills, projects, contact, help)..."
-                      className="bg-transparent text-foreground placeholder:text-foreground/40 outline-none w-full font-mono text-xs sm:text-sm"
+                      placeholder="Type a command (e.g. whoami, skills, projects, contact, help)..."
+                      className="bg-transparent text-foreground placeholder:text-foreground/35 outline-none w-full font-mono text-xs sm:text-sm"
                     />
                     <button
                       type="submit"
-                      className="p-1.5 rounded-lg bg-primary/20 text-primary hover:bg-primary hover:text-white transition-colors"
+                      className="p-1 rounded bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
                       title="Run command"
                     >
                       <CornerDownLeft className="w-3.5 h-3.5" />
@@ -200,9 +197,9 @@ export default function About() {
                 </div>
 
                 {/* Terminal Status bar */}
-                <div className="px-5 py-2.5 bg-foreground/[0.04] dark:bg-black/30 border-t border-border/40 text-[11px] font-mono text-foreground/50 flex justify-between">
-                  <span>💡 Pro tip: Click any command above or type your own!</span>
-                  <span className="text-emerald-500 font-semibold">● ONLINE</span>
+                <div className="px-4 py-2 bg-foreground/[0.02] dark:bg-[#0D1117] border-t border-border text-[11px] font-mono text-foreground/50 flex justify-between">
+                  <span>Interactive Terminal Session</span>
+                  <span className="text-emerald-500 font-medium">● ACTIVE</span>
                 </div>
 
               </div>
@@ -214,3 +211,4 @@ export default function About() {
     </section>
   );
 }
+

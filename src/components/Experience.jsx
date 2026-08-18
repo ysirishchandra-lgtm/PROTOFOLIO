@@ -4,63 +4,62 @@ import TiltCard from './TiltCard';
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-28 relative overflow-hidden bg-foreground/[0.015]">
+    <section id="experience" className="py-24 relative overflow-hidden">
       
       {/* Background ambient light */}
-      <div className="absolute top-1/2 right-10 w-96 h-96 bg-primary/10 rounded-full blur-[140px] -z-10"></div>
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-accent/10 rounded-full blur-[140px] -z-10"></div>
+      <div className="absolute top-1/2 right-10 w-80 h-80 bg-primary/5 rounded-full blur-[130px] -z-10 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center mb-16 animate-slide-up">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass border border-primary/30 text-primary text-xs font-bold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass border border-border text-primary text-xs font-bold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5" />
-            Milestones
+            Milestones & Leadership
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-            Education & <span className="text-shimmer">Leadership</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+            Education & <span className="text-gradient-restrained">Experience</span>
           </h2>
-          <p className="mt-4 text-foreground/75 max-w-2xl mx-auto text-base sm:text-lg">
-            My academic foundation and hackathon leadership experiences that shape my engineering mindset.
+          <p className="mt-3 text-foreground/70 max-w-xl mx-auto text-sm sm:text-base">
+            Academic groundwork in Computer Science and hackathon leadership in fast-paced collaborative environments.
           </p>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-primary to-accent mx-auto mt-4 rounded-full"></div>
+          <div className="w-16 h-1 bg-primary/40 mx-auto mt-3 rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
           
           {/* Education Column */}
           <div>
-            <div className="flex items-center gap-3.5 mb-8">
-              <div className="p-3 bg-primary/20 rounded-2xl text-primary">
-                <GraduationCap className="w-7 h-7" />
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-2.5 bg-primary/10 rounded-xl text-primary">
+                <GraduationCap className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-foreground">Academic Journey</h3>
-                <p className="text-xs text-foreground/50 font-mono">Formal education & milestones</p>
+                <h3 className="text-xl font-bold text-foreground">Academic Foundation</h3>
+                <p className="text-xs text-foreground/50 font-mono">Formal degrees & coursework</p>
               </div>
             </div>
             
-            <div className="space-y-6 relative before:absolute before:inset-0 before:left-6 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-primary before:via-accent before:to-transparent">
+            <div className="space-y-6 relative before:absolute before:inset-0 before:left-4 before:h-full before:w-px before:bg-border">
               {portfolioData.education.map((item, idx) => (
-                <div key={idx} className="relative pl-14 group">
+                <div key={idx} className="relative pl-10 group">
                   
-                  {/* Glowing Node */}
-                  <div className="absolute left-3.5 top-5 -translate-x-1/2 flex items-center justify-center w-6 h-6 rounded-full bg-background border-2 border-primary shadow-lg shadow-primary/30 group-hover:scale-125 transition-transform z-10">
-                    <div className="w-2 h-2 rounded-full bg-primary animate-ping"></div>
+                  {/* Timeline Node */}
+                  <div className="absolute left-4 top-4 -translate-x-1/2 flex items-center justify-center w-4 h-4 rounded-full bg-bg-surface border-2 border-primary group-hover:scale-125 transition-transform z-10">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
                   </div>
 
-                  <TiltCard maxTilt={8} scale={1.01} className="rounded-2xl">
-                    <div className="glass-panel p-6 rounded-2xl border border-border/70 group-hover:border-primary/50 transition-all shadow-md">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
-                        <h4 className="font-bold text-lg text-primary">{item.degree}</h4>
-                        <span className="inline-flex items-center gap-1 text-xs font-mono text-foreground/60 px-2.5 py-1 bg-foreground/5 rounded-lg border border-border/40 w-fit">
+                  <TiltCard maxTilt={5} scale={1.01} className="rounded-xl">
+                    <div className="glass-card p-5 rounded-xl border border-border group-hover:border-primary/40 transition-all shadow-sm">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1.5">
+                        <h4 className="font-bold text-base text-foreground group-hover:text-primary transition-colors">{item.degree}</h4>
+                        <span className="inline-flex items-center gap-1 text-[11px] font-mono text-foreground/60 px-2 py-0.5 bg-foreground/5 rounded-md border border-border w-fit">
                           <Calendar className="w-3 h-3 text-primary" />
                           {item.duration}
                         </span>
                       </div>
-                      <h5 className="font-semibold text-foreground/90 mb-2">{item.institution}</h5>
-                      <p className="text-sm text-foreground/75 leading-relaxed">{item.description}</p>
+                      <h5 className="font-medium text-xs sm:text-sm text-foreground/80 mb-2">{item.institution}</h5>
+                      <p className="text-xs text-foreground/65 leading-relaxed">{item.description}</p>
                     </div>
                   </TiltCard>
 
@@ -71,29 +70,29 @@ export default function Experience() {
 
           {/* Leadership & Hackathons Column */}
           <div>
-            <div className="flex items-center gap-3.5 mb-8">
-              <div className="p-3 bg-accent/20 rounded-2xl text-accent">
-                <Award className="w-7 h-7" />
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-2.5 bg-primary/10 rounded-xl text-primary">
+                <Award className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-foreground">Leadership & Hackathons</h3>
-                <p className="text-xs text-foreground/50 font-mono">Team coordination & competitions</p>
+                <h3 className="text-xl font-bold text-foreground">Leadership & Hackathons</h3>
+                <p className="text-xs text-foreground/50 font-mono">Team coordination & solution design</p>
               </div>
             </div>
             
-            <div className="space-y-6 relative before:absolute before:inset-0 before:left-6 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-accent before:via-purple-500 before:to-transparent">
+            <div className="space-y-6 relative before:absolute before:inset-0 before:left-4 before:h-full before:w-px before:bg-border">
               {portfolioData.leadership.map((item, idx) => (
-                <div key={idx} className="relative pl-14 group">
+                <div key={idx} className="relative pl-10 group">
                   
-                  {/* Glowing Node */}
-                  <div className="absolute left-3.5 top-5 -translate-x-1/2 flex items-center justify-center w-6 h-6 rounded-full bg-background border-2 border-accent shadow-lg shadow-accent/30 group-hover:scale-125 transition-transform z-10">
-                    <div className="w-2 h-2 rounded-full bg-accent animate-ping"></div>
+                  {/* Timeline Node */}
+                  <div className="absolute left-4 top-4 -translate-x-1/2 flex items-center justify-center w-4 h-4 rounded-full bg-bg-surface border-2 border-primary group-hover:scale-125 transition-transform z-10">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
                   </div>
 
-                  <TiltCard maxTilt={8} scale={1.01} className="rounded-2xl">
-                    <div className="glass-panel p-6 rounded-2xl border border-border/70 group-hover:border-accent/50 transition-all shadow-md">
-                      <h4 className="font-bold text-lg text-accent mb-2">{item.title}</h4>
-                      <p className="text-sm text-foreground/75 leading-relaxed">{item.description}</p>
+                  <TiltCard maxTilt={5} scale={1.01} className="rounded-xl">
+                    <div className="glass-card p-5 rounded-xl border border-border group-hover:border-primary/40 transition-all shadow-sm">
+                      <h4 className="font-bold text-base text-foreground group-hover:text-primary transition-colors mb-2">{item.title}</h4>
+                      <p className="text-xs text-foreground/65 leading-relaxed">{item.description}</p>
                     </div>
                   </TiltCard>
 
@@ -107,3 +106,4 @@ export default function Experience() {
     </section>
   );
 }
+

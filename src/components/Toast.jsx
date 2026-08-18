@@ -6,7 +6,7 @@ export default function Toast({ message, isVisible, onClose }) {
     if (isVisible) {
       const timer = setTimeout(() => {
         onClose();
-      }, 5000);
+      }, 4500);
       return () => clearTimeout(timer);
     }
   }, [isVisible, onClose]);
@@ -15,16 +15,18 @@ export default function Toast({ message, isVisible, onClose }) {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 animate-slide-up">
-      <div className="glass-panel px-6 py-4 rounded-xl border border-green-500/30 shadow-lg shadow-green-500/10 flex items-center gap-3">
-        <CheckCircle2 className="w-5 h-5 text-green-500" />
-        <p className="text-sm font-medium pr-6">{message}</p>
+      <div className="glass-panel px-5 py-3.5 rounded-xl border border-emerald-500/30 shadow-lg flex items-center gap-3 bg-bg-surface">
+        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+        <p className="text-xs sm:text-sm font-medium text-foreground/90 pr-4">{message}</p>
         <button 
           onClick={onClose}
-          className="p-1 hover:bg-foreground/5 rounded-md transition-colors absolute right-2"
+          className="p-1 hover:bg-foreground/5 rounded-md transition-colors text-foreground/50 hover:text-foreground"
+          aria-label="Dismiss notification"
         >
-          <X className="w-4 h-4 text-foreground/50" />
+          <X className="w-3.5 h-3.5" />
         </button>
       </div>
     </div>
   );
 }
+

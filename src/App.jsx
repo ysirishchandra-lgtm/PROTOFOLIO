@@ -23,12 +23,12 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen selection:bg-primary/30 selection:text-primary-hover relative overflow-x-hidden">
+    <div className="min-h-screen selection:bg-primary/20 selection:text-primary relative overflow-x-hidden bg-bg-primary text-text-primary">
       
-      {/* Interactive Constellation Star Canvas */}
+      {/* Interactive Ambient Grid Matrix */}
       <ParticleCanvas />
 
-      {/* Dynamic Cursor Spotlight Torch Glow */}
+      {/* Dynamic Cursor Ambient Torch Glow */}
       <CursorGlow />
 
       <Navbar />

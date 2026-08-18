@@ -14,7 +14,7 @@ import {
   export const portfolioData = {
     personal: {
       name: "Sirish Chandra Yellanki",
-      roles: ["Full-Stack Developer", "Computer Science Student", "AI/Software Enthusiast"],
+      roles: ["Full-Stack Developer", "AI & Software Builder", "CSE Student @ KMCE", "Building Real-World Software"],
       tagline: "Building practical software products and integrating AI into real-world applications.",
       objective: "Motivated Computer Science & Engineering student seeking a software development internship to apply programming, full-stack development, database, and problem-solving skills in real-world projects. Interested in building practical software products, learning modern technologies, and contributing effectively to development teams.",
       location: "Hyderabad, Telangana, India",

@@ -23,7 +23,7 @@ export default function TiltCard({ children, className = '', maxTilt = 12, scale
     setGlarePos({
       x: (x / rect.width) * 100,
       y: (y / rect.height) * 100,
-      opacity: 0.25,
+      opacity: 0.12,
     });
   };
 
